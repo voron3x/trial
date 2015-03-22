@@ -15,3 +15,6 @@ class IpTable(models.Model):
     ip_address = models.IPAddressField(u'Ip адрес пользователя')
     date = models.DateTimeField(u'Дата создания записи', auto_now_add=True,
                                 blank=True)
+
+    class Meta:
+        unique_together = ('user_id', 'ip_address')

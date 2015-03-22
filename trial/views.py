@@ -8,11 +8,11 @@ from trial.models import IpTable
 def user_exists(value):
     """ Валидатор.
 
-    Проверяет наличие переданного пользователя.
+    Проверяет наличие хотя бы одной записи с переданным пользователем.
     """
-    try:
-        IpTable.objects.get(user_id=value)
-    except IpTable.DoesNotExist:
+    data = IpTable.objects.filter(user_id=value)[0]
+
+    if not data:
         raise serializers.ValidationError(u'такого пользователя нет')
 
 class IpTableSerializer(serializers.Serializer):

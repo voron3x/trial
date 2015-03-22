@@ -50,6 +50,8 @@ def compare_users(user1, user2):
     users = IpTable.objects.filter(user_id__in=(user1, user2))
     users_ip = users.values_list('ip_address', 'user_id')
 
+    import ipdb; ipdb.set_trace()
+
     # Аккумулятор подсетей совпавших адресов
     compare_subnet = {}
 
